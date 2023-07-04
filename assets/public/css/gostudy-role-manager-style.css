@@ -1,0 +1,10 @@
+#amelia-app-backend #tab-packages,
+#amelia-app-backend #tab-resources {
+  display: none;
+}
+#am-dashboard .am-big-stats div.am-grid-content a.am-goto {
+  display: none;
+}
+.am-side-dialog.am-dialog-employee .am-cabinet-timezone {
+  display: none;
+}
