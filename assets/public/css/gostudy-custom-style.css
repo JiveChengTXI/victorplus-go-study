@@ -1,0 +1,13 @@
+#amelia-app-backend .am-logo {
+  display: none;
+}
+#amelia-app-backend .am-page-title {
+  padding-left: 0;
+  border-left: 0;
+}
+#amelia-app-backend .am-help-button {
+  display: none;
+}
+#wpbody-content #loco-content .notice{
+  display: block !important;
+}
