@@ -307,7 +307,7 @@ final class GOSTUDY {
 	}
 	public function remove_breadcrumbs() {
 		$buddyboss_theme = buddyboss_theme();
-		remove_action( 'woo_custom_breadcrumb', array( $buddyboss_theme->_woocommerce_helper, 'custom_breadcrumb' ), $this->hook_priority, 0 );
+		remove_action( 'woo_custom_breadcrumb', array( $buddyboss_theme->woocommerce_helper(), 'custom_breadcrumb' ), $this->hook_priority, 0 );
 	}
 	public function product_meta_captcher() {
 		add_action( 'woocommerce_product_meta_start', function() {
