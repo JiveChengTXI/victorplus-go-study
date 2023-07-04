@@ -1,0 +1,95 @@
+/** 修正成就名人榜 widget 破版樣式 */
+.ld-achievements-leaderboard table thead th {
+  font-size: 14px;
+  white-space: nowrap;
+}
+.ld-achievements-leaderboard table thead tr th:first-child{
+  padding-left: 15px;
+}
+.ld-achievements-leaderboard table tbody tr td:first-child{
+  padding-left: 15px;
+}
+.ld-achievements-leaderboard table td {
+  font-size: 14px;
+  padding: 10px;
+}
+.ld-achievements-leaderboard table td img {
+  max-width: 20px;
+}
+.bb-template-v2 .widget-area .widget {
+  padding: .75rem;
+}
+
+/** 修正發佈心得筆記的前台介面 */
+form.standard-form.bp-simple-post-form #wp-bp_simple_post_text-editor-tools {
+  margin-bottom: 8px;
+}
+#buddypress form.standard-form.bp-simple-post-form #wp-bp_simple_post_text-editor-container .mce-toolbar .mce-btn button {
+  padding: 2px;
+  border-radius: 0px;
+  line-height: 2;
+  display: inline-flex;
+  align-items: center;
+}
+#buddypress form.standard-form.bp-simple-post-form #wp-bp_simple_post_text-editor-container .mce-toolbar .mce-btn.mce-listbox .mce-txt {
+  line-height: 1.5;
+}
+.bbpress.buddyblog.edit.buddypress .media-modal.wp-core-ui button {
+  border-radius: 0px;
+  color: inherit;
+}
+.bbpress.buddyblog.edit.buddypress .media-modal.wp-core-ui button:hover {
+  color: #2271b1;
+}
+.bbpress.buddyblog.edit.buddypress .media-modal.wp-core-ui select,.bbpress.buddyblog.edit.buddypress .media-modal.wp-core-ui input {
+  height: 32px;
+}
+.bbpress.buddyblog.edit.buddypress .media-modal.wp-core-ui button.media-modal-close {
+  background-color: inherit;
+  border: none;
+}
+#buddypress .bp-profile-content .profile.edit .field_type_membertypes {
+  display: none;
+}
+
+/** 修正大學簡介手機排版 */
+.directorist-details-info-wrap .directorist-single-info.directorist-single-info-textarea .directorist-single-info__label {
+  min-width: 220px;
+}
+
+/** amelia 修改 */
+input.el-upload__input {
+  display: none !important;
+}
+.el-popper.am-cabinet-profile-dropdown>.el-dropdown-menu__item:last-of-type {
+  display: none !important;
+}
+.am-cabinet-dashboard-appointments .am-cabinet-collapsed-content .el-row.am-hide-less-than-desktop:nth-child(2) {
+  display: none !important;
+}
+.am-cabinet-dashboard-appointments  .am-cabinet-collapsed-content .am-has-divider.el-row>.el-row:nth-of-type(2){
+  display: none !important;
+}
+.am-cabinet-dashboard-appointments  .am-cabinet-collapsed-content .am-has-divider.el-row>.el-row>.am-customer-name~div:nth-child(4) {
+  display: none !important;
+}
+.am-cabinet-dashboard-appointments  .am-cabinet-collapsed-content .am-has-divider.el-row>.el-row>.am-customer-name~div:nth-child(5) {
+  display: none !important;
+}
+
+/** 聽力測驗開始測驗、開始播放 */
+.disable-audio.start-with-button{
+	pointer-events:none;
+	visibility: hidden;
+    height: 0px;
+    margin: 0;
+}
+
+
+@media only screen and (max-width: 991px) {
+  .directorist-details-info-wrap .directorist-single-info .directorist-single-info__label {
+    min-width: 220px;
+    min-width: 100% !important;
+  }
+}
+
