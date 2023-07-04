@@ -55,7 +55,7 @@ final class GOSTUDY {
 		add_action( 'bp_setup_nav', array( $this, 'add_listing_in_bp_profile' ), $this->hook_priority );
 		add_action( 'init', array( $this, 'frontend_initialize' ), $this->hook_priority );
 		add_action( 'init', array( $this, 'product_meta_captcher' ), $this->hook_priority );
-		add_action( 'init', 'remove_breadcrumbs' );
+		add_action( 'init', array( $this, 'remove_breadcrumbs') );
 		add_action( 'admin_init', array( $this, 'admin_initialize' ), $this->hook_priority );
 		add_action( 'bp_before_activation_page', array( $this, 'buddypress_activation_autoactivate' ) );
 		add_action( 'wp_login', array( $this, 'update_amelia_providor_when_account_login' ), $this->hook_priority, 2 );
