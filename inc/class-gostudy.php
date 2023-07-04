@@ -33,6 +33,7 @@ final class GOSTUDY {
 	 */
 	public $plugin_name = 'gostudy';
 	public $teacher_member_name = '老師';
+	public $hook_priority = 999;
 	public static function instance() {
 		if ( is_null( self::$_instance ) ) {
 			self::$_instance = new self();
@@ -50,13 +51,15 @@ final class GOSTUDY {
 				return $fields;
 			}
 		);
-		add_filter( 'tiny_mce_before_init', array( $this, 'tiny_mce_before_init' ), 100 );
-		add_action( 'bp_setup_nav', array( $this, 'add_listing_in_bp_profile' ), 100 );
-		add_action( 'init', array( $this, 'frontend_initialize' ), 999 );
-		add_action( 'admin_init', array( $this, 'admin_initialize' ), 999 );
+		add_filter( 'tiny_mce_before_init', array( $this, 'tiny_mce_before_init' ), $this->hook_priority );
+		add_action( 'bp_setup_nav', array( $this, 'add_listing_in_bp_profile' ), $this->hook_priority );
+		add_action( 'init', array( $this, 'frontend_initialize' ), $this->hook_priority );
+		add_action( 'init', array( $this, 'product_meta_captcher' ), $this->hook_priority );
+		add_action( 'init', 'remove_breadcrumbs' );
+		add_action( 'admin_init', array( $this, 'admin_initialize' ), $this->hook_priority );
 		add_action( 'bp_before_activation_page', array( $this, 'buddypress_activation_autoactivate' ) );
-		add_action( 'wp_login', array( $this, 'update_amelia_providor_when_account_login' ), 20, 2 );
-		add_action( 'wp_login', array( $this, 'insert_service_location_when_account_login' ), 25, 2 );
+		add_action( 'wp_login', array( $this, 'update_amelia_providor_when_account_login' ), $this->hook_priority, 2 );
+		add_action( 'wp_login', array( $this, 'insert_service_location_when_account_login' ), $this->hook_priority, 2 );
 	}
 	public function buddypress_activation_autoactivate() {
 		$key = bp_get_current_activation_key();
@@ -301,6 +304,19 @@ final class GOSTUDY {
 			'0.0.002'
 		);
 		remove_filter('bp_get_requested_url', 'bb_support_learndash_course_other_language_permalink');
+	}
+	public function remove_breadcrumbs() {
+		remove_action( 'woocommerce_before_main_content', 'woocommerce_breadcrumb', $this->hook_priority, 0 );
+	}
+	public function product_meta_captcher() {
+		add_action( 'woocommerce_product_meta_start', function() {
+			ob_start();
+		}, $this->hook_priority );
+		add_action( 'woocommerce_product_meta_end', function() {
+			$content = ob_get_clean();
+			$content = preg_replace('/\<span.+posted_in\spr-atts-row.+\<\/span\>/', '', $content);
+			echo $content;
+		}, $this->hook_priority );
 	}
 	public function admin_initialize() {
 		add_action( 'admin_enqueue_scripts', array( $this, 'gostudy_admin_styles_modifier' ) );
