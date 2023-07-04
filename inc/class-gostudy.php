@@ -55,7 +55,6 @@ final class GOSTUDY {
 		add_action( 'bp_setup_nav', array( $this, 'add_listing_in_bp_profile' ), $this->hook_priority );
 		add_action( 'init', array( $this, 'frontend_initialize' ), $this->hook_priority );
 		add_action( 'init', array( $this, 'product_meta_captcher' ), $this->hook_priority );
-		add_action( 'init', array( $this, 'remove_breadcrumbs') );
 		add_action( 'admin_init', array( $this, 'admin_initialize' ), $this->hook_priority );
 		add_action( 'bp_before_activation_page', array( $this, 'buddypress_activation_autoactivate' ) );
 		add_action( 'wp_login', array( $this, 'update_amelia_providor_when_account_login' ), $this->hook_priority, 2 );
@@ -304,10 +303,6 @@ final class GOSTUDY {
 			'0.0.002'
 		);
 		remove_filter('bp_get_requested_url', 'bb_support_learndash_course_other_language_permalink');
-	}
-	public function remove_breadcrumbs() {
-		$buddyboss_theme = buddyboss_theme();
-		remove_action( 'woo_custom_breadcrumb', array( $buddyboss_theme->woocommerce_helper(), 'custom_breadcrumb' ), $this->hook_priority, 0 );
 	}
 	public function product_meta_captcher() {
 		add_action( 'woocommerce_product_meta_start', function() {
