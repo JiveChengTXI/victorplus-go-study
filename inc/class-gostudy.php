@@ -306,7 +306,8 @@ final class GOSTUDY {
 		remove_filter('bp_get_requested_url', 'bb_support_learndash_course_other_language_permalink');
 	}
 	public function remove_breadcrumbs() {
-		remove_action( 'woocommerce_before_main_content', 'woocommerce_breadcrumb', $this->hook_priority, 0 );
+		$buddyboss_theme = buddyboss_theme();
+		remove_action( 'woo_custom_breadcrumb', array( $buddyboss_theme->_woocommerce_helper, 'custom_breadcrumb' ), $this->hook_priority, 0 );
 	}
 	public function product_meta_captcher() {
 		add_action( 'woocommerce_product_meta_start', function() {
