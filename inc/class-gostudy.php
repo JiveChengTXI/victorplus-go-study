@@ -294,7 +294,7 @@ final class GOSTUDY {
 			'gostudy-frontend-modifer-style',
 			plugins_url( '/assets/public/css/gostudy-frontend-modifer-style.css', GOSTUDY_PLUGIN_FILE ),
 			array(),
-			'1.0.18.021'
+			'1.0.18.022'
 		);
 		wp_enqueue_script(
 			'force-amelia-upload-file-accepts',
